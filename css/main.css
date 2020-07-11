@@ -1,0 +1,133 @@
+:root {
+    --body-color: #F5F5F5;
+    --my-gray: #28262B;
+    --my-black: #191919;
+    --my-lightgray: #717171;
+    --my-green: #336666;
+}
+
+body {
+    background-color: var(--body-color);
+    font-family: 'PT Sans Narrow', sans-serif;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#main_menu {
+    background-color: var(--my-black);
+    width: 17vw;
+    height: 100vh;
+    display: inline-block;
+}
+
+#menu_title {
+    color: var(--my-gray);
+    background-color: var(--my-gray);
+    padding: 7vh 0;
+    text-align: center;
+}
+
+#menu_title h2 {
+    font-weight: 600;
+    display: inline-block;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 2vh;
+    letter-spacing: 1.5px;
+    background-color: var(--my-green);
+    padding: 2vh 4vh;
+    border-radius: 35px 0 35px 0;
+    transition: opacity .25s ease-in-out;
+}
+
+#menu_title h2:hover {
+    opacity: 70%;
+}
+  
+.menu_links a {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    text-align: left;
+    padding: 4.5em 0 0.8em;
+    color: var(--my-lightgray);
+    font-size: 2.2vh;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--my-lightgray);
+    transition: opacity .25s ease-in-out;
+}
+
+.menu_links a:hover {
+    opacity: 70%;
+}
+
+.menu_links {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+i {
+    margin-right: 0.8vh;
+}
+
+#all_contacts {
+    float: right;
+    display: inline-block;
+    width: 83vw;
+}
+
+.contacts_table {
+    width: 93%;
+    margin: 0 auto;
+}
+
+.contacts_table h2 {
+    background-color: white;
+    width: 12%;
+    padding: 1.2em;
+    text-align: center;
+    margin-top: 7vh;
+    margin-bottom: 0.5em;
+    color: var(--my-green);
+    font-size: 2vh;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 25px 25px 0 0;
+    font-weight: 600;
+}
+
+#my_table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+  }
+  
+#my_table td, #my_table th {
+    border-bottom: 1px solid rgb(231, 231, 231);
+    padding: 1.2em;
+}
+
+#my_table tr {
+    background-color: white;
+}
+
+#my_table th {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    background-color: var(--my-green);
+    color: white;
+  }
+
+#my_table tr:last-child td {
+    border: none;
+}
+
+#my_table tr:last-child td:last-child {
+    border-radius: 0 0 25px 0;
+}
+
+#my_table tr:last-child td:first-child {
+    border-radius: 0 0 0 25px;
+}
