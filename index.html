@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script/main.js"></script>
 </head>
 <body>
     <div id="main_menu">
         <div id="menu_title">
-            <h2>My Contacts</h2>
+            <a href="#"><h2>My Contacts</h2></a>
         </div>
         <div class="menu_links">
-            <a href="#"><i class="fa fa-address-book" aria-hidden="true"></i>All Contacts</a> 
-            <a href="#"><i class="fa fa-plus-square" aria-hidden="true"></i>Add new</a> 
-            <a href="#"><i class="fa fa-pencil-square" aria-hidden="true"></i>Edit contacts</a> 
+            <button id="all"><i class="fa fa-address-book" aria-hidden="true"></i>All Contacts</button> 
+            <button id="addnew"><i class="fa fa-plus-square" aria-hidden="true"></i>Add new</button> 
+            <button id="edit"><i class="fa fa-pencil-square" aria-hidden="true"></i>Edit contacts</button> 
         </div>
     </div>
 
@@ -27,43 +28,19 @@
                 <i class="fa fa-user" aria-hidden="true"></i>Contacts
             </h2>
             
-            <table id="my_table">
-                <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Date of birth</th>
-                  <th>E-mail</th>
-                  <th>Address</th>
-                </tr>
-                <tr>
-                  <td>Alfreds Futterkiste</td>
-                  <td>Maria Anders</td>
-                  <td>05 01 2000</td>
-                  <td>Marie@Anders.com</td>
-                  <td>Germany</td>
-                </tr>
-                <tr>
-                  <td>Berglunds snabbköp</td>
-                  <td>Christina Berglund</td>
-                  <td>15 41 2000</td>
-                  <td>Berglunds@snabbköp.com</td>
-                  <td>Sweden</td>
-                </tr>
-                <tr>
-                    <td>Paris spécialités</td>
-                    <td>Marie Bertrand</td>
-                    <td>35 01 3432</td>
-                    <td>Paris@spécialités.com</td>
-                    <td>France</td>
+            <table class="scroll_table" id="my_table">
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of birth</th>
+                    <th>E-mail</th>
+                    <th>Address</th>
                   </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>05 01 2000</td>
-                    <td>Marie@Anders.com</td>
-                    <td>Germany</td>
-                </tr>
-            </table>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
         </div>
     </div>
 </body>

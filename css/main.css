@@ -13,6 +13,7 @@ body {
     padding: 0 !important;
 }
 
+/* Menu */
 #main_menu {
     background-color: var(--my-black);
     width: 17vw;
@@ -21,18 +22,19 @@ body {
 }
 
 #menu_title {
-    color: var(--my-gray);
     background-color: var(--my-gray);
-    padding: 7vh 0;
+    padding: 6.5vh 0;
     text-align: center;
+    box-shadow: 0px 15px 10px -20px #000000;    
 }
 
 #menu_title h2 {
+    color: var(--my-gray);
     font-weight: 600;
     display: inline-block;
     margin: 0;
     text-transform: uppercase;
-    font-size: 2vh;
+    font-size: 1.5vw;
     letter-spacing: 1.5px;
     background-color: var(--my-green);
     padding: 2vh 4vh;
@@ -44,7 +46,10 @@ body {
     opacity: 70%;
 }
   
-.menu_links a {
+.menu_links button {
+    cursor: pointer;
+    margin: 0 auto;
+    width: 60%;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -52,18 +57,21 @@ body {
     text-align: left;
     padding: 4.5em 0 0.8em;
     color: var(--my-lightgray);
-    font-size: 2.2vh;
+    font-size: 1.2vw;
     text-decoration: none;
+    border: none;
     border-bottom: 1.5px solid var(--my-lightgray);
     transition: opacity .25s ease-in-out;
+    background-color: transparent;
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
-.menu_links a:hover {
+
+.menu_links button:hover {
     opacity: 70%;
 }
 
 .menu_links {
-    width: 80%;
     display: block;
     margin: 0 auto;
 }
@@ -72,6 +80,7 @@ i {
     margin-right: 0.8vh;
 }
 
+/* Contacts and table */
 #all_contacts {
     float: right;
     display: inline-block;
@@ -88,7 +97,7 @@ i {
     width: 12%;
     padding: 1.2em;
     text-align: center;
-    margin-top: 7vh;
+    margin-top: 6.5vh;
     margin-bottom: 0.5em;
     color: var(--my-green);
     font-size: 2vh;
@@ -96,14 +105,17 @@ i {
     text-transform: uppercase;
     border-radius: 25px 25px 0 0;
     font-weight: 600;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);  
 }
 
 #my_table {
+    background-color: white;
     border-collapse: collapse;
-    width: 100%;
-    text-align: center;
-  }
-  
+    min-width: 100%;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);  
+    border-radius: 0 0 25px 25px;
+}
+
 #my_table td, #my_table th {
     border-bottom: 1px solid rgb(231, 231, 231);
     padding: 1.2em;
@@ -114,20 +126,88 @@ i {
 }
 
 #my_table th {
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
+    font-size: 1.15em;
+    padding-top: 1.15em;
+    padding-bottom: 1.15em;
     background-color: var(--my-green);
     color: white;
   }
 
-#my_table tr:last-child td {
+.scroll_table { 
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.scroll_table tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+  max-height: 65vh;
+  border-radius: 0 0 25px 25px;
+}
+
+.scroll_table thead tr {
+   display: block;
+}
+
+.scroll_table th, .scroll_table td {
+  padding: 5px;
+  text-align: center;
+  width: 200px;
+}
+
+/* Table Input */
+
+.newinput {
+    text-align: center;
+    padding: 0.5vw;
     border: none;
+    border-bottom: 1px solid rgb(221, 221, 221);
 }
 
-#my_table tr:last-child td:last-child {
-    border-radius: 0 0 25px 0;
+.newinput:focus {
+    border: none;
+    border-bottom: 1px solid var(--my-green);
+    outline: none;
+    color: var(--my-green);
 }
 
-#my_table tr:last-child td:first-child {
-    border-radius: 0 0 0 25px;
+.submitInput {
+    text-align: center;
+    width: 50%;
+    margin: 1em auto 0;
+}
+
+.submitInput input {
+    border-radius: 20px 0 20px 0;
+    text-transform: uppercase;
+    border: none;;
+    padding: 0.8em 1.5em;
+    background-color: var(--my-black);
+    color: var(--body-color);
+    cursor: pointer;
+    transition: background-color .25s ease-in-out;
+}
+
+.submitInput input:hover {
+    background-color: var(--my-green);
+}
+
+.edit_row:hover {
+    color: var(--my-green);
+}
+
+.fa-check-square {
+    color: var(--my-green);
+}
+
+#deleteIcon:hover {
+    cursor: pointer;
+    color: firebrick;
+}
+
+.disabled_add {
+    cursor: default; 
+    color: red;
 }
