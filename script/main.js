@@ -13,17 +13,16 @@
                                                                             "<td>" + retrievedScores[i].Address + "</td>"+
                                                                         "</tr>";
         }
-    } 
+    } else {
+        alert("The Local Storage is empty.");
+    }
 
     document.getElementById("addnew").addEventListener("click", addnew);
     document.getElementById("all").addEventListener("click", all_contacts);
     document.getElementById("edit").addEventListener("click", edit);
-
-    var add_new_clicked = 0;
+    document.getElementById("deleteall").addEventListener("click", deleteall);
 
     function addnew() {
-        add_new_clicked = 1;
-        
         document.getElementById("my_table").insertRow(-1).innerHTML = '<tr>' +
                                                             '<td><input id="new_name" class="newinput" type="text" placeholder="First Name" required></td>' +
                                                             '<td><input id="new_lname" class="newinput" type="text" placeholder="Last Name" required></td>' +
@@ -38,8 +37,6 @@
 
         var elements = document.getElementsByClassName('contacts_table');
         elements[0].appendChild(node);
-
-        alert("addnew");
 
         document.getElementById("addnew").disabled = true;
         document.getElementById("addnew").style.opacity = "0.6";
@@ -83,11 +80,11 @@
 
     document.addEventListener('click', function(e){
         if(e.target && e.target.id == 'deleteIcon') {   
-            var index = e.target.classList[2]-1;
-            var updatedjsonobj = delete retrievedScores[index];
+            var index = e.target.classList[2];
+            var updatedjsonobj = delete retrievedScores[index-1];
             localStorage.clear();
             localStorage.setItem("test_obj", JSON.stringify(updatedjsonobj));
-            document.getElementById("my_table").deleteRow(index+1);
+            document.getElementById("my_table").deleteRow(index);
         }
     });
 
@@ -141,6 +138,7 @@
         var checkIfValid = 1;
 
         if ((/[^a-zA-Z]/.test(name.value) || name.value.length == 0)) {
+            alert("Name has to be more than 0 and alphabetic.");
             name.style.border= "1px solid firebrick";
             checkIfValid = 0;
         } else {
@@ -148,6 +146,7 @@
             name.style.borderBottom = "1px solid rgb(221, 221, 221)";
         }
         if ((/[^a-zA-Z]/.test(lname.value) || lname.value.length == 0)) {
+            alert("Last Name has to be more than 0 and alphabetic.");
             lname.style.border= "1px solid firebrick";
             checkIfValid = 0;
         } else {
@@ -158,10 +157,12 @@
             date.style.border= "none";
             date.style.borderBottom = "1px solid rgb(221, 221, 221)";
         } else {
+            alert("Data has to be more than 0 and in yyyy/mm/dd format.");
             date.style.border= "1px solid firebrick";
             checkIfValid = 0;
         }
         if (!validateEmail(email.value)) {
+            alert("Data has to be more than 0 and in data@email.com format.");
             email.style.border= "1px solid firebrick";
             checkIfValid = 0;
         } else {
@@ -200,6 +201,10 @@
                 document.getElementById("addnew").style.cursor = "pointer";
                 document.getElementById("addnew").disabled = false;
                 document.getElementById("addnew").style.opacity = "100%";
+
+                document.getElementById("edit").style.cursor = "pointer";
+                document.getElementById("edit").disabled = false;
+                document.getElementById("edit").style.opacity = "100%";
             }
          }
      });
@@ -238,5 +243,11 @@
 
      function all_contacts() {
         location.reload();
+     }
+
+     function deleteall() {
+        localStorage.clear();
+        location.reload();
+        alert("All data has been deleted.");
      }
 }); 
