@@ -154,7 +154,7 @@ i {
 .scroll_table th, .scroll_table td {
   padding: 5px;
   text-align: center;
-  width: 200px;
+  width: 250px;
 }
 
 /* Table Input */
@@ -205,9 +205,4 @@ i {
 #deleteIcon:hover {
     cursor: pointer;
     color: firebrick;
-}
-
-.disabled_add {
-    cursor: default; 
-    color: red;
 }

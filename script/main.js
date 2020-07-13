@@ -6,7 +6,7 @@
     if (!(localStorage.getItem("test_obj") === null)) {
         var retrievedScores = JSON.parse(localStorage.getItem("test_obj"));
         for (var i = 0; i < retrievedScores.length; i++) {
-            document.getElementById("my_table").insertRow(-1).innerHTML = "<tr><td>"+ retrievedScores[i].FirstName + "</td>" +
+            document.getElementById("mytbody").insertRow(-1).innerHTML = "<tr><td>"+ retrievedScores[i].FirstName + "</td>" +
                                                                             "<td>" + retrievedScores[i].LastName + "</td>" +
                                                                             "<td>" + retrievedScores[i].Date + "</td>"+
                                                                             "<td>" + retrievedScores[i].Email + "</td>"+
@@ -23,7 +23,7 @@
     document.getElementById("deleteall").addEventListener("click", deleteall);
 
     function addnew() {
-        document.getElementById("my_table").insertRow(-1).innerHTML = '<tr>' +
+        document.getElementById("mytbody").insertRow(-1).innerHTML = '<tr>' +
                                                             '<td><input id="new_name" class="newinput" type="text" placeholder="First Name" required></td>' +
                                                             '<td><input id="new_lname" class="newinput" type="text" placeholder="Last Name" required></td>' +
                                                             '<td><input type="date" id="new_date" class="newinput" name="trip-start" placeholder="YYYY-MM-DD" required></td>' +
@@ -81,10 +81,19 @@
     document.addEventListener('click', function(e){
         if(e.target && e.target.id == 'deleteIcon') {   
             var index = e.target.classList[2];
-            var updatedjsonobj = delete retrievedScores[index-1];
+            retrievedScores.splice(index-1, 1);
             localStorage.clear();
-            localStorage.setItem("test_obj", JSON.stringify(updatedjsonobj));
-            document.getElementById("my_table").deleteRow(index);
+            localStorage.setItem("test_obj", JSON.stringify(retrievedScores));
+
+            document.getElementById("mytbody").deleteRow(index);
+
+            document.getElementById("addnew").style.cursor = "pointer";
+            document.getElementById("addnew").disabled = false;
+            document.getElementById("addnew").style.opacity = "100%";
+
+            document.getElementById("edit").style.cursor = "pointer";
+            document.getElementById("edit").disabled = false;
+            document.getElementById("edit").style.opacity = "100%";
         }
     });
 
@@ -138,7 +147,6 @@
         var checkIfValid = 1;
 
         if ((/[^a-zA-Z]/.test(name.value) || name.value.length == 0)) {
-            alert("Name has to be more than 0 and alphabetic.");
             name.style.border= "1px solid firebrick";
             checkIfValid = 0;
         } else {
@@ -146,7 +154,6 @@
             name.style.borderBottom = "1px solid rgb(221, 221, 221)";
         }
         if ((/[^a-zA-Z]/.test(lname.value) || lname.value.length == 0)) {
-            alert("Last Name has to be more than 0 and alphabetic.");
             lname.style.border= "1px solid firebrick";
             checkIfValid = 0;
         } else {
@@ -157,12 +164,10 @@
             date.style.border= "none";
             date.style.borderBottom = "1px solid rgb(221, 221, 221)";
         } else {
-            alert("Data has to be more than 0 and in yyyy/mm/dd format.");
             date.style.border= "1px solid firebrick";
             checkIfValid = 0;
         }
         if (!validateEmail(email.value)) {
-            alert("Data has to be more than 0 and in data@email.com format.");
             email.style.border= "1px solid firebrick";
             checkIfValid = 0;
         } else {
@@ -188,9 +193,9 @@
                 localStorage.clear();
                 retrievedScores.push(contact);
                 localStorage.setItem("test_obj", JSON.stringify(retrievedScores));
-                document.getElementById("my_table").deleteRow(-1);
+                document.getElementById("mytbody").deleteRow(-1);
 
-                document.getElementById("my_table").insertRow(-1).innerHTML = "<tr><td>" + retrievedScores[retrievedScores.length-1].FirstName + "</td>" +
+                document.getElementById("mytbody").insertRow(-1).innerHTML = "<tr><td>" + retrievedScores[retrievedScores.length-1].FirstName + "</td>" +
                                                                                   "<td>" + retrievedScores[retrievedScores.length-1].LastName + "</td>" +
                                                                                   "<td>" + retrievedScores[retrievedScores.length-1].Date + "</td>"+
                                                                                   "<td>" + retrievedScores[retrievedScores.length-1].Email + "</td>"+
@@ -222,27 +227,39 @@
                 var contact = JSON.parse( '{ "FirstName": "'+ name.value +'","LastName": "'+ lname.value +'", "Date": "'+ date.value +'", "Email": "'+ email.value +'", "Address": "'+ address.value +'"}' ); 
                 
                 localStorage.clear();
-                retrievedScores[e.target.id-2] = contact;
+                retrievedScores[e.target.id-1] = contact;
                 localStorage.setItem("test_obj", JSON.stringify(retrievedScores));
 
-                document.getElementById("my_table").deleteRow(e.target.id);
-                document.getElementById("my_table").insertRow(e.target.id).innerHTML = "<tr><td>" + retrievedScores[e.target.id-2].FirstName + "</td>" +
-                                                                                  "<td>" + retrievedScores[e.target.id-2].LastName + "</td>" +
-                                                                                  "<td>" + retrievedScores[e.target.id-2].Date + "</td>"+
-                                                                                  "<td>" + retrievedScores[e.target.id-2].Email + "</td>"+
-                                                                                  "<td>" + retrievedScores[e.target.id-2].Address + "</td>"+
+                document.getElementById("mytbody").deleteRow(e.target.id);
+                document.getElementById("mytbody").insertRow(e.target.id).innerHTML = "<tr><td>" + retrievedScores[e.target.id-1].FirstName + "</td>" +
+                                                                                  "<td>" + retrievedScores[e.target.id-1].LastName + "</td>" +
+                                                                                  "<td>" + retrievedScores[e.target.id-1].Date + "</td>"+
+                                                                                  "<td>" + retrievedScores[e.target.id-1].Email + "</td>"+
+                                                                                  "<td>" + retrievedScores[e.target.id-1].Address + "</td>"+
                                                                               "</tr>";
                 document.getElementById("save_btn").remove();
+
                 document.getElementById("addnew").style.cursor = "pointer";
                 document.getElementById("addnew").disabled = false;
                 document.getElementById("addnew").style.opacity = "100%";
 
+                document.getElementById("edit").style.cursor = "pointer";
+                document.getElementById("edit").disabled = false;
+                document.getElementById("edit").style.opacity = "100%";
             }
          }
      });
 
      function all_contacts() {
         location.reload();
+
+        document.getElementById("addnew").style.cursor = "pointer";
+        document.getElementById("addnew").disabled = false;
+        document.getElementById("addnew").style.opacity = "100%";
+
+        document.getElementById("edit").style.cursor = "pointer";
+        document.getElementById("edit").disabled = false;
+        document.getElementById("edit").style.opacity = "100%";
      }
 
      function deleteall() {
