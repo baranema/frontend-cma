@@ -45,6 +45,9 @@
         document.getElementById("edit").disabled = true;
         document.getElementById("edit").style.opacity = "0.6";
         document.getElementById("edit").style.cursor = "default";
+
+        var elmnt = document.getElementById("new_name");
+        elmnt.scrollIntoView();
     }
 
     function edit() {
@@ -230,8 +233,8 @@
                 retrievedScores[e.target.id-1] = contact;
                 localStorage.setItem("test_obj", JSON.stringify(retrievedScores));
 
-                document.getElementById("mytbody").deleteRow(e.target.id);
-                document.getElementById("mytbody").insertRow(e.target.id).innerHTML = "<tr><td>" + retrievedScores[e.target.id-1].FirstName + "</td>" +
+                document.getElementById("mytbody").deleteRow(e.target.id-1);
+                document.getElementById("mytbody").insertRow(e.target.id-1).innerHTML = "<tr><td></td><td>" + retrievedScores[e.target.id-1].FirstName + "</td>" +
                                                                                   "<td>" + retrievedScores[e.target.id-1].LastName + "</td>" +
                                                                                   "<td>" + retrievedScores[e.target.id-1].Date + "</td>"+
                                                                                   "<td>" + retrievedScores[e.target.id-1].Email + "</td>"+

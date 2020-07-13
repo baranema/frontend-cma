@@ -37,7 +37,7 @@ body {
     font-size: 1.5vw;
     letter-spacing: 1.5px;
     background-color: var(--my-green);
-    padding: 2vh 4vh;
+    padding: 1.5vw 2vw;
     border-radius: 35px 0 35px 0;
     transition: opacity .25s ease-in-out;
 }
@@ -100,7 +100,7 @@ i {
     margin-top: 6.5vh;
     margin-bottom: 0.5em;
     color: var(--my-green);
-    font-size: 2vh;
+    font-size: 1.4vw;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     border-radius: 25px 25px 0 0;
@@ -151,10 +151,11 @@ i {
    display: block;
 }
 
+
 .scroll_table th, .scroll_table td {
   padding: 5px;
   text-align: center;
-  width: 250px;
+  width: 25vw;
 }
 
 /* Table Input */
